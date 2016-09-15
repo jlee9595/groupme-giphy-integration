@@ -18,8 +18,13 @@ def send_gif():
 			query.replace(" ", "+")
 
 			r = requests.get(GIPHY_ENDPOINT, data = {"api_key": GIPHY_API_KEY, "s" : query})
-			gif_url = r.json()["data"]["images"]["downsized_large"]["url"]
-			response = gif_url if gif_url != None else "Sorry I could not find a gif for that"
+			data = r.json()["data"]
+
+			#giphy will provide data as dict if there is a result or empty list if none
+			if type(data) is dict:
+				response = data["images"]["downsized_large"]["url"]
+			else:
+				response = "Sorry I couldn't find a gif for that"
 
 			requests.post(GROUPME_ENDPOINT, data = {"bot_id" : BOT_ID, "text" : response})
 
