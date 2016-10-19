@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 GIPHY_API_KEY = "dc6zaTOxFJmzC"
-BOT_ID = "d3822257e9df07545ebfdbbecb"
+BOT_ID = ""
 GIPHY_ENDPOINT = "http://api.giphy.com/v1/gifs/translate"
 GROUPME_ENDPOINT = "https://api.groupme.com/v3/bots/post"
 
